@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
-app.use("/signup", signUpRoutes);
 app.use("/signin", signinRoutes);
+app.use("/signup", signUpRoutes);
 app.use("/users", jwtVerify, userRoutes);
 
 app.listen(PORT, () => {
