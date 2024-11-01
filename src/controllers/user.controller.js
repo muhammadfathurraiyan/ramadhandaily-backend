@@ -66,6 +66,11 @@ export async function updateUser(req, res) {
       .json({ success: false, message: "Invalid user id!" });
   }
 
+  if (user.password) {
+    const passwordHash = bcrypt.hashSync(user.password, saltRounds);
+    user.password = passwordHash;
+  }
+
   try {
     const updatedUser = await User.findByIdAndUpdate(id, user, { new: true });
     res.status(200).json({ success: true, data: updatedUser });

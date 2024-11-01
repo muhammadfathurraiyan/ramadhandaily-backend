@@ -15,6 +15,7 @@ app.use(express.json());
 app.use("/signin", signinRoutes);
 app.use("/signup", signUpRoutes);
 app.use("/users", jwtVerify, userRoutes);
+app.use("/attendances", jwtVerify, userRoutes);
 
 app.listen(PORT, () => {
   connectDB();
